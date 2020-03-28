@@ -11,7 +11,7 @@ public interface LeaveService {
 	
 	LeaveType getAllLeave(Long userId)throws UserIdNotFoundException;
 	
-	public ApplyLeave applyLeave(ApplyLeaveDto applyLeaveDto)throws UserIdNotFoundException;
+	public ApplyLeave applyLeave(ApplyLeaveDto applyLeaveDto)throws LeaveIdNotFoundException,UserIdNotFoundException;
 	
 
 }

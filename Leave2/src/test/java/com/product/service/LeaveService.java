@@ -1,6 +1,7 @@
 package com.product.service;
 
 import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.time.LocalDate;
 import java.util.Optional;
@@ -47,8 +48,9 @@ public class LeaveService {
 		
 	
 		Mockito.when(applyRepo.findById(100L)).thenReturn(Optional.of(applyLeave));
+		Mockito.when(applyRepo.save(applyLeave)).thenReturn(applyLeave);
 		ApplyLeave ap=leaveType.applyLeave(apply);
-		assertNotNull(apply);		
+		assertEquals(ap, "leave applied successfully");		
 	}
 	
 	@Test

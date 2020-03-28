@@ -25,7 +25,7 @@ public class LeaveTypeServiceImpl implements LeaveService{
 	private ApplyLeaveRepo applyRepo;
 
 	@Override
-	public LeaveType getAllLeave(Long userId)throws LeaveIdNotFoundException {
+	public LeaveType getAllLeave(Long userId)throws UserIdNotFoundException {
 		LeaveType leave=repo.findById(userId).orElseThrow(UserIdNotFoundException::new);
 		return leave;
 	}
@@ -34,7 +34,7 @@ public class LeaveTypeServiceImpl implements LeaveService{
 
 
 	@Override
-	public ApplyLeave applyLeave(ApplyLeaveDto applyLeaveDto)throws LeaveIdNotFoundException {
+	public ApplyLeave applyLeave(ApplyLeaveDto applyLeaveDto)throws LeaveIdNotFoundException ,UserIdNotFoundException{
 		ApplyLeave apply=new ApplyLeave(applyLeaveDto.getUserId(),applyLeaveDto.getLeaveTypeName(),applyLeaveDto.getReason(),
 				applyLeaveDto.getFromDate(),applyLeaveDto.getToDate(),applyLeaveDto.getNoOfDays());
 		return applyRepo.save(apply);

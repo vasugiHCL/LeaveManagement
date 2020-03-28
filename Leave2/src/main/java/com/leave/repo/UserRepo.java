@@ -9,7 +9,8 @@ import com.leave.entity.User;
 
 @Repository
 public interface UserRepo extends JpaRepository<User, Long>{
+	
+	Optional<User> findByUserEmailIdAndUserPassword(String userEmailId,String userPassword);
+	
 
-	
-	
 }

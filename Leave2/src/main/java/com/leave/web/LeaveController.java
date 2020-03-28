@@ -13,6 +13,7 @@ import com.leave.dto.ApplyLeaveDto;
 import com.leave.dto.ResponseDto;
 import com.leave.entity.ApplyLeave;
 import com.leave.entity.LeaveType;
+import com.leave.exception.LeaveIdNotFoundException;
 import com.leave.exception.UserIdNotFoundException;
 import com.leave.service.LeaveService;
 
@@ -29,7 +30,7 @@ public class LeaveController {
 	}
 	
 	@PostMapping(value="users/applyLeave")
-	public ResponseEntity<ResponseDto>applyLeave(@RequestBody ApplyLeaveDto dto)throws UserIdNotFoundException{
+	public ResponseEntity<ResponseDto>applyLeave(@RequestBody ApplyLeaveDto dto)throws UserIdNotFoundException,LeaveIdNotFoundException{
 		ApplyLeave ap=ls.applyLeave(dto);
 		ResponseDto res=new ResponseDto();
 		res.setMessage("Leave applied successfuly");
