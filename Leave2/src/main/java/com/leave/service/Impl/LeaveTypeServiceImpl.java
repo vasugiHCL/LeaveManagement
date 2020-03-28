@@ -42,11 +42,10 @@ public class LeaveTypeServiceImpl implements LeaveService{
 		
 		Optional<LeaveType> leaveType=repo.findById(applyLeaveDto.getUserId());
 		
-		//System.out.println(leaveType.get().getAnnualHoliday());
-		
 		Period period = Period.between(applyLeaveDto.getFromDate(), applyLeaveDto.getToDate());
 		int noOfdays= period.getDays() + 1;
 		leaveType.get().setTotalLeaveDays(leaveType.get().getTotalLeaveDays()-noOfdays);
+		
 		
 		repo.save(leaveType.get());
 	
