@@ -11,6 +11,18 @@ public class ApplyLeaveDto {
 	private LocalDate toDate;
 	private int noOfDays;
 	
+	private Long LeaveNum;
+	
+	
+	
+	
+	public Long getLeaveNum() {
+		return LeaveNum;
+	}
+	public void setLeaveNum(Long leaveNum) {
+		LeaveNum = leaveNum;
+	}
+	
 	public Long getUserId() {
 		return userId;
 	}

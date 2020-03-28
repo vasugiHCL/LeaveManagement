@@ -8,5 +8,7 @@ import com.leave.entity.ApplyLeave;
 
 @Repository
 public interface ApplyLeaveRepo extends JpaRepository<ApplyLeave, Long>{
+	
+	
 
 }

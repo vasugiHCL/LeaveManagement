@@ -31,8 +31,8 @@ public class ApplyLeave implements Serializable{
 		this.userId = userId;
 		this.leaveTypeName = leaveTypeName;
 		this.reason = reason;
-		this.fromDate = LocalDate.now();
-		this.toDate = LocalDate.now();
+		this.fromDate = fromDate;
+		this.toDate =toDate;
 		this.noOfDays = noOfDays;
 	}
 
