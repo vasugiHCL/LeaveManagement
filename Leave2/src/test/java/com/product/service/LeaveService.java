@@ -36,7 +36,7 @@ public class LeaveService {
 	ApplyLeave applyLeave=null;
 	  ApplyLeaveDto apply=null;
 	
-	/*@Test
+	@Test
 	public void testApplyLeave() throws UserIdNotFoundException{
 		applyLeave=new ApplyLeave();
 		applyLeave.setUserId(100L);
@@ -51,9 +51,9 @@ public class LeaveService {
 		Mockito.when(applyRepo.save(applyLeave)).thenReturn(applyLeave);
 		ApplyLeave ap=leaveType.applyLeave(apply);
 		assertEquals(ap, "leave applied successfully");		
-	}*/
+	}
 	
-	/*@Test
+	@Test
 	public void testGetAllLeave() throws UserIdNotFoundException{
 		
 		applyLeave=new ApplyLeave();
@@ -68,6 +68,6 @@ public class LeaveService {
 		assertNotNull(leave);
 		
 		
-	}*/
+	}
 
 }
