@@ -16,11 +16,13 @@ import org.mockito.junit.MockitoJUnitRunner;
 import com.leave.dto.ApplyLeaveDto;
 import com.leave.entity.ApplyLeave;
 import com.leave.entity.LeaveType;
+import com.leave.entity.User;
 import com.leave.exception.LeaveIdNotFoundException;
 import com.leave.exception.UserIdNotFoundException;
 import com.leave.exception.UserNotFoundException;
 import com.leave.repo.ApplyLeaveRepo;
 import com.leave.repo.LeaveRepository;
+import com.leave.repo.UserRepo;
 import com.leave.service.Impl.LeaveTypeServiceImpl;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -31,12 +33,14 @@ public class LeaveService {
 	
 	@Mock
 	LeaveRepository leaveRepo;
+	UserRepo userRepo;
 	
 	@Mock
 	ApplyLeaveRepo applyRepo;
 	
 	ApplyLeave applyLeave=null;
 	  ApplyLeaveDto apply=null;
+	  User user=null;
 	
 	@Test
 	public void testApplyLeave() throws UserIdNotFoundException,LeaveIdNotFoundException{
@@ -67,9 +71,16 @@ public class LeaveService {
 		Long userId=100L;
 		Mockito.when(leaveRepo.findById(userId)).thenReturn(Optional.of(leave));
 		leaveType.getAllLeave(100L);
-		assertNotNull(leave);
+		assertNotNull(leave);		
 		
-		
+	}
+	
+	@Test(expected = UserNotFoundException.class)
+	public void testAllLeave()throws UserNotFoundException{
+		LeaveType leave=new LeaveType();
+		leave.setUserId(100L);
+		Mockito.when(leaveRepo.findById(100L)).thenReturn(Optional.of(leave));
+		leaveType.getAllLeave(100L);
 	}
 
 }

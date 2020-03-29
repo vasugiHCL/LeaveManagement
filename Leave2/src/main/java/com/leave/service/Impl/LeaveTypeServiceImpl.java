@@ -44,8 +44,11 @@ public class LeaveTypeServiceImpl implements LeaveService{
 		
 		Period period = Period.between(applyLeaveDto.getFromDate(), applyLeaveDto.getToDate());
 		int noOfdays= period.getDays() + 1;
-		leaveType.get().setTotalLeaveDays(leaveType.get().getTotalLeaveDays()-noOfdays);
 		
+		
+			leaveType.get().setAvailableLeaveDays(leaveType.get().getAvailableLeaveDays()-noOfdays);
+			leaveType.get().setTotalLeaveDays(leaveType.get().getTotalLeaveDays()-noOfdays);
+			
 		
 		repo.save(leaveType.get());
 	

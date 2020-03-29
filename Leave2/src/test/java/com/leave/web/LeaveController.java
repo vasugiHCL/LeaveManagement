@@ -18,15 +18,17 @@ import com.leave.dto.ResponseDto;
 import com.leave.entity.ApplyLeave;
 import com.leave.entity.LeaveType;
 import com.leave.exception.UserIdNotFoundException;
+import com.leave.exception.UserNotFoundException;
 import com.leave.service.LeaveService;
-import com.mysql.cj.protocol.x.Ok;
+
 
 @RunWith(MockitoJUnitRunner.class)
 public class LeaveController {
 	
 	
 	@Mock
-	LeaveService leaveService;
+	private LeaveService leaveService;
+	
 	
 	@InjectMocks
 	com.leave.web.LeaveController leaveControl;
@@ -59,16 +61,22 @@ public class LeaveController {
 	}
 	@Test
 	public void getAllLeaveTest()throws UserIdNotFoundException{
-		LeaveType leave=new LeaveType();
-		
-		
+		LeaveType leave=new LeaveType();	
 		leave.setUserId(100L);
 		Long userId=100L;
 		Mockito.when(leaveService.getAllLeave(userId)).thenReturn(leave);
 		ResponseEntity<LeaveType>lea=leaveControl.getAllLeave(userId);
 		assertEquals(HttpStatus.OK,lea.getStatusCode());
-		
-		
+				
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 }
